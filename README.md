@@ -1,11 +1,11 @@
-# ts-eventemitter
+# eventemitter-ts
 
 Typed `EventEmitter` classes for use with TypeScript.
 
 ## Installation
 
 ```sh
-npm install ts-eventemitter
+npm install eventemitter-ts
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ All classes use the same interface as Node's built-in `EventEmitter`, but with g
 ### `TypedEventEmitter`
 
 ```ts
-import { TypedEventEmitter } from 'ts-eventemitter';
+import { TypedEventEmitter } from 'eventemitter-ts';
 
 interface Events {
     'foo': number;
@@ -33,7 +33,7 @@ ee.on('foo', (arg: string) => {}); // Error! 'foo' event does not emit argument 
 ### `ProtectedEventEmitter`
 
 ```ts
-import { ProtectedEventEmitter } from 'ts-eventemitter';
+import { ProtectedEventEmitter } from 'eventemitter-ts';
 
 interface Events {
     'foo': number;
