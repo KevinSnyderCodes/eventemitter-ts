@@ -21,6 +21,42 @@ class TestProtectedEventEmitter extends ProtectedEventEmitter<Events> {
     }
 }
 
+function emitTestEvents(ee: TypedEventEmitter<Events>) {
+    ee.emit('foo', 123);
+    ee.emit('bar', 'test');
+}
+
+describe('TypedEventEmitter', () => {
+    const ee = new TypedEventEmitter<Events>();
+    const fooListener = sinon.spy();
+    const barListener = sinon.spy();
+
+    describe('#removeAllListeners', () => {
+        beforeEach(() => {
+            ee.on('foo', fooListener);
+            ee.on('bar', barListener);
+        });
+
+        it('should remove all listeners for the specified event', () => {
+            ee.removeAllListeners('foo');
+            emitTestEvents(ee);
+            expect(fooListener.called).to.be.false;
+            expect(barListener.calledOnce).to.be.true;
+        });
+        it('should remove all listeners if called with no arguments', () => {
+            ee.removeAllListeners();
+            emitTestEvents(ee);
+            expect(fooListener.called).to.be.false;
+            expect(barListener.called).to.be.false;
+        });
+
+        afterEach(() => {
+            fooListener.resetHistory();
+            barListener.resetHistory();
+        })
+    });
+});
+
 describe('ProtectedEventEmitter', () => {
     const ee = new TestProtectedEventEmitter();
     const listener = sinon.spy();

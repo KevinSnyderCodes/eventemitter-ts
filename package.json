@@ -6,6 +6,8 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "clean": "rimraf lib",
+    "pretest": "npm run build",
     "test": "mocha -r ts-node/register test/**/*.ts"
   },
   "repository": {
@@ -23,6 +25,7 @@
     "@types/sinon": "^5.0.0",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
+    "rimraf": "^2.6.2",
     "sinon": "^5.0.10",
     "ts-node": "^6.0.5",
     "typescript": "^2.8.3"

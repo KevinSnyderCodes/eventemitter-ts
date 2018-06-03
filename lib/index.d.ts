@@ -28,7 +28,7 @@ export declare class TypedEventEmitter<T> extends EventEmitter {
  */
 export declare class ProtectedEventEmitter<T> extends TypedEventEmitter<T> {
     /**
-     * @deprecated _NOP_, use `PrivateEventEmitter#privateEmit` to emit events from
+     * @deprecated _NOP_, use `PrivateEventEmitter#privateEmit` to emit events from within the class
      */
     emit<K extends keyof T>(event: K, arg: T[K]): boolean;
     protected protectedEmit<K extends keyof T>(event: K, arg: T[K]): boolean;

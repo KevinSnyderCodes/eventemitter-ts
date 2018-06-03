@@ -26,7 +26,11 @@ export class TypedEventEmitter<T> extends EventEmitter {
         return super.removeListener(event, listener);
     }
     removeAllListeners<K extends keyof T>(event?: K): this {
-        return super.removeAllListeners(event);
+        if (event === undefined) {
+            return super.removeAllListeners();
+        } else {
+            return super.removeAllListeners(event);
+        }
     }
     listeners<K extends keyof T>(event: K): Function[] {
         return super.listeners(event);
