@@ -7,8 +7,7 @@
     "module": "commonjs",
     "declaration": true,
     "outDir": "./lib",
-    "strict": true,
-    "keyofStringsOnly": true
+    "strict": true
   },
   "exclude": [
       "./lib",
